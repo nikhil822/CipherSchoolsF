@@ -1,0 +1,22 @@
+.aboutme{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 40px 0;
+}
+.top{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 45px;
+}
+.bottom{
+    
+    display: flex;
+    justify-content: center;
+}
+.textarea{
+    width: 90vw;
+    background-color: #262c36;
+    border-radius: 10px;
+    padding: 10px;
+    color: #fff;
+}

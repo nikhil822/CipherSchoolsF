@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.top1{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 45px;
+}
+.btm2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.one{
+    margin: 5px 35px;
+    /* width: 50px; */
+    
+}
+.one input{
+    width: 590px;
+    padding: 7px;
+    background-color: #262c36;
+    border: none;
+    outline: none;
+    color: #fff;
+
+}
+.social{
+    display: flex;
+    align-items: center;
+    background-color: #262c36;
+    padding: 7px 11px;
+    border-radius: 8px;
+}
