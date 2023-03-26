@@ -16,7 +16,7 @@ const Name = () => {
             </div>
         </div>
         <div className="right">
-            <span> 0 followers</span>
+            <span style={{color:'#fff'}}> 0 followers</span>
         </div>
         
     </div>

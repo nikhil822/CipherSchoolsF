@@ -1,0 +1,47 @@
+
+.one1{
+    margin: 5px 35px;
+    /* width: 50px; */
+}
+
+.one1 input{
+    width: 590px;
+    padding: 7px;
+    background-color: #262c36;
+    border: none;
+    outline: none;
+    color: #fff;
+
+}
+.one1 .social{
+    display: flex;
+    align-items: center;
+    background-color: #262c36;
+    padding: 7px 15px;
+    border-radius: 8px;
+}
+
+h5{
+    font-size: 16px;
+}
+.social1 {
+    display: flex;
+    align-items: center;
+    background-color: #15181e;
+    margin: 8px 0;
+    border-radius: 8px;
+}
+.social1 input{
+    width: 90%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 10px;
+}
+.btn{
+    display: flex;
+    justify-content: flex-end;
+}
+.btn1{
+    margin: 10px;
+}
