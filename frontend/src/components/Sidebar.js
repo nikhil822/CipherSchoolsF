@@ -281,7 +281,9 @@ export default function MiniDrawer() {
             </AppBar>
             {renderMenu}
         </Box>
-        <Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" open={open} PaperProps={{
+          sx:{bgcolor:'#262c36'}
+        }}>
             <DrawerHeader>
             <IconButton onClick={handleDrawerClose}>
                 {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -329,7 +331,7 @@ export default function MiniDrawer() {
                         justifyContent: 'center',
                     }}
                     >
-                    <LoginIcon />
+                    <button><LoginIcon /></button>
                     </ListItemIcon>
                     {open && <ListItemText primary="Login"  />}
                 </ListItemButton>

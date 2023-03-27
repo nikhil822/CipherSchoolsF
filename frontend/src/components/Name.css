@@ -5,7 +5,7 @@
 .intro {
     display: flex;
     justify-content: space-between;
-    width: 94.7vw;
+    width: calc(100vw-64.2px);
     background-color: #262c36;
     padding: 15px 30px;
 }

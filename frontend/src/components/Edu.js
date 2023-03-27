@@ -2,11 +2,20 @@ import React from "react";
 import "./Edu.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Button from "@mui/material/Button";
-import { Divider, Box, Typography } from "@mui/material";
+import { Divider, Box, Typography, Grid, Paper } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Backdrop from "@mui/material/Backdrop";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { styled } from '@mui/material/styles';
+
+const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: '#15181e',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: '#fff',
+  }));
 
 const style = {
   position: "absolute",
@@ -14,17 +23,20 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   bgcolor: "#262c36",
-  borderRadius:'1rem',
+  borderRadius: "1rem",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
-  width:'35%',
+  width: "35%",
 };
 
 const Edu = () => {
   const [open, setOpen] = React.useState(false);
+  const [open1, setOpen1] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleOpen1 = () => setOpen1(true);
+  const handleClose1 = () => setOpen1(false);
   return (
     <div>
       <div className="aboutme">
@@ -159,6 +171,7 @@ const Edu = () => {
             <strong>INTEREST</strong>
           </h5>
           <Button
+            onClick={handleOpen1}
             size="small"
             variant="contained"
             sx={{
@@ -169,6 +182,83 @@ const Edu = () => {
           >
             EDIT
           </Button>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={open1}
+            onClose={handleClose1}
+            closeAfterTransition
+            slots={{ backdrop: Backdrop }}
+            slotProps={{
+              backdrop: {
+                timeout: 500,
+              },
+            }}
+          >
+            <Fade in={open1}>
+              <Box sx={style}>
+                <Grid
+                  container
+                  rowSpacing={1}
+                  columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                  className='grid'
+                >
+                  <Grid item xs={6}>
+                    <Item>App Development</Item>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Item>Web Development</Item>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Item>Game Development</Item>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Item>Data Structure</Item>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Item>Programming</Item>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Item>Machine Learning</Item>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Item>Data Science</Item>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Item>Others</Item>
+                  </Grid>
+                </Grid>
+                <div className="btn">
+                  <div className="btn1">
+                    <Button
+                      size="small"
+                      variant="outlined"
+                      sx={{
+                        color: "#000",
+                        backgroundColor: "#fff",
+                        ":hover": { bgcolor: "#fff", opacity: 0.75 },
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                  <div className="btn1">
+                    <Button
+                      size="small"
+                      variant="contained"
+                      sx={{
+                        color: "#fff",
+                        backgroundColor: "#f3912e",
+                        ":hover": { bgcolor: "#f3912e", opacity: 0.75 },
+                      }}
+                    >
+                      Save
+                    </Button>
+                  </div>
+                </div>
+              </Box>
+            </Fade>
+          </Modal>
         </div>
       </div>
     </div>
