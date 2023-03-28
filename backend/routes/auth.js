@@ -8,22 +8,23 @@ const jwt = require('jsonwebtoken')
 const requireLogin = require('../middleware/requireLogin')
 
 router.post('/signup', (req, res) => {
-    const { firstName, lastName, email, password } = req.body
-    if (!email || !firstName || !lastName || !password) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    const { FirstName, LastName, Email, Password } = req.body
+    if (!Email || !FirstName || !LastName || !Password) {
         return res.status(422).json({error:"Please add all the entries"})
     }
-    User.findOne({ email: email })
+    User.findOne({ Email: Email })
         .then((savedUser) => {
             if (savedUser) {
                 return res.status(422).json({error:"Already registered"})
             }
-            bcrypt.hash(password, 12)
+            bcrypt.hash(Password, 12)
                 .then(hashPasswd => {
                     const user = new User({
-                        firstName,
-                        lastName,
-                        email,
-                        password:hashPasswd
+                        FirstName,
+                        LastName,
+                        Email,
+                        Password:hashPasswd
                     })
                     user.save()
                         .then(user => {
@@ -40,16 +41,16 @@ router.post('/signup', (req, res) => {
 })
 
 router.post('/signin', (req, res) => {
-    const { email, password } = req.body
-    if (!email || !password) {
-        return res.status(422).json({error:"Please enter email and password"})
+    const { Email, Password } = req.body
+    if (!Email || !Password) {
+        return res.status(422).json({error:"Please enter Email and Password"})
     }
-    User.findOne({ email: email })
+    User.findOne({ Email: Email })
         .then(savedUser => {
             if (!savedUser) {
-                return res.status(422).json({error:"Invalid username or password"})
+                return res.status(422).json({error:"Invalid username or Password"})
             }
-            bcrypt.compare(password, savedUser.password)
+            bcrypt.compare(Password, savedUser.Password)
                 .then(isMatch => {
                     if (isMatch) {
                         // res.json({message:"Successfully logged in"})
@@ -64,7 +65,7 @@ router.post('/signin', (req, res) => {
                         })
                     }
                     else {
-                        return res.status(422).json({error:"Invalid username and password"})
+                        return res.status(422).json({error:"Invalid username and Password"})
                     }
                 })
                 .catch(err => {
@@ -78,10 +79,10 @@ router.post('/signin', (req, res) => {
 
 router.post('/changePass',requireLogin, (req, res, next) => {
    console.log("Heer")
-    const {password, changePass, confirmPass} = req.body
+    const {Password, changePass, confirmPass} = req.body
     User.findOne({_id:req.user}).then((user)=>{
         
-        bcrypt.compare(password,user.password).then((isMatch)=>{
+        bcrypt.compare(Password,user.Password).then((isMatch)=>{
             if(!isMatch){
                 console.log("HERHE")
                 const err = new Error("Wrong")
@@ -91,7 +92,7 @@ router.post('/changePass',requireLogin, (req, res, next) => {
 
                 if(changePass === confirmPass){
                     bcrypt.hash(changePass, 12).then((hashedpass)=>{
-                        user.password = hashedpass
+                        user.Password = hashedpass
                         user.save()
                         res.status(200).send("Successful")
                     })
@@ -108,10 +109,10 @@ router.post('/changePass',requireLogin, (req, res, next) => {
     }
 })
 router.post('/update',requireLogin, (req, res) => {
-    const {firstName, lastName, mobile} = req.body
+    const {FirstName, LastName, Mobile} = req.body
     User.findOne({_id:req.user}).then((user)=>{
-        user.firstName = firstName
-        user.lastName = lastName
+        user.FirstName = FirstName
+        user.LastName = LastName
         user.mobile = mobile
         user.save()
         res.status(200).send("Successfully updated")

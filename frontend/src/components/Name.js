@@ -11,8 +11,8 @@ const Name = () => {
             </div>
             <div className="left-r">
                 <p>Hello,</p>
-                <p>Nikhil </p>
-                <p>emailid</p>
+                <h6>Nikhil Kumar Sahu </h6>
+                <p>nikhil1312@gmail.com</p>
             </div>
         </div>
         <div className="right">

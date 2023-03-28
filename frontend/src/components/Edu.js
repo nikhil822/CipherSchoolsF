@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Edu.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Button from "@mui/material/Button";
@@ -8,6 +8,7 @@ import Fade from "@mui/material/Fade";
 import Backdrop from "@mui/material/Backdrop";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { styled } from '@mui/material/styles';
+
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#15181e',
@@ -37,6 +38,11 @@ const Edu = () => {
   const handleClose = () => setOpen(false);
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);
+  const [interest, setInterest] = useState([])
+  const handleInt = (val) => {
+    const arr = [...interest, val]
+    setInterest(arr)
+  }
   return (
     <div>
       <div className="aboutme">
@@ -93,7 +99,7 @@ const Edu = () => {
               ":hover": { bgcolor: "#f3912e", opacity: 0.75 },
             }}
           >
-            EDIT
+            CHANGE
           </Button>
           <Modal
             aria-labelledby="transition-modal-title"
@@ -204,28 +210,28 @@ const Edu = () => {
                   className='grid'
                 >
                   <Grid item xs={6}>
-                    <Item>App Development</Item>
+                    <Item onClick={handleInt}>App Development</Item>
                   </Grid>
                   <Grid item xs={6}>
-                    <Item>Web Development</Item>
+                    <Item onClick={handleInt}>Web Development</Item>
                   </Grid>
                   <Grid item xs={6}>
-                    <Item>Game Development</Item>
+                    <Item onClick={handleInt}>Game Development</Item>
                   </Grid>
                   <Grid item xs={6}>
-                    <Item>Data Structure</Item>
+                    <Item onClick={handleInt}>Data Structure</Item>
                   </Grid>
                   <Grid item xs={6}>
-                    <Item>Programming</Item>
+                    <Item onClick={handleInt}>Programming</Item>
                   </Grid>
                   <Grid item xs={6}>
-                    <Item>Machine Learning</Item>
+                    <Item onClick={handleInt}>Machine Learning</Item>
                   </Grid>
                   <Grid item xs={6}>
-                    <Item>Data Science</Item>
+                    <Item onClick={handleInt}>Data Science</Item>
                   </Grid>
                   <Grid item xs={6}>
-                    <Item>Others</Item>
+                    <Item onClick={handleInt}>Others</Item>
                   </Grid>
                 </Grid>
                 <div className="btn">
