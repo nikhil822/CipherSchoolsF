@@ -84,7 +84,7 @@ const Signup = () => {
             <input type="password" name="Password" value={user.Password} placeholder="Password" onChange={ handleChange }></input>
             <div className="button" onClick={register} >Register</div>
             <div>or</div>
-            <div className="button" onClick={() => navigate("/signin")} >Login</div>
+            <div className="button" onClick={() => navigate("/signin")}>Login</div>
         </div>
           </Box>
         </Fade>
